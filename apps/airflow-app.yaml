@@ -14,8 +14,6 @@ spec:
     repoURL: https://github.com/maxkrivich/do-argocd-apps.git
     targetRevision: HEAD
     path: deployment/airflow/overlays/dev
-    kustomize:
-      version: v4.4.0
 
   syncPolicy:
     syncOptions:
