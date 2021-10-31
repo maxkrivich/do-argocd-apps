@@ -23,11 +23,11 @@
 kind: ServiceAccount
 apiVersion: v1
 metadata:
-  name: RELEASE-NAME-airflow-flower
+  name: airflow-flower
   labels:
     tier: airflow
     component: flower
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 ---
@@ -55,11 +55,11 @@ metadata:
 kind: ServiceAccount
 apiVersion: v1
 metadata:
-  name: RELEASE-NAME-airflow-create-user-job
+  name: airflow-create-user-job
   labels:
     tier: airflow
     component: create-user-job
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 ---
@@ -87,11 +87,11 @@ metadata:
 kind: ServiceAccount
 apiVersion: v1
 metadata:
-  name: RELEASE-NAME-airflow-migrate-database-job
+  name: airflow-migrate-database-job
   labels:
     tier: airflow
     component: run-airflow-migrations
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 ---
@@ -119,11 +119,11 @@ metadata:
 kind: ServiceAccount
 apiVersion: v1
 metadata:
-  name: RELEASE-NAME-airflow-redis
+  name: airflow-redis
   labels:
     tier: airflow
     component: redis
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 ---
@@ -151,11 +151,11 @@ metadata:
 kind: ServiceAccount
 apiVersion: v1
 metadata:
-  name: RELEASE-NAME-airflow-scheduler
+  name: airflow-scheduler
   labels:
     tier: airflow
     component: scheduler
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 ---
@@ -183,11 +183,11 @@ metadata:
 kind: ServiceAccount
 apiVersion: v1
 metadata:
-  name: RELEASE-NAME-airflow-statsd
+  name: airflow-statsd
   labels:
     tier: airflow
     component: statsd
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 ---
@@ -215,11 +215,11 @@ metadata:
 kind: ServiceAccount
 apiVersion: v1
 metadata:
-  name: RELEASE-NAME-airflow-webserver
+  name: airflow-webserver
   labels:
     tier: airflow
     component: webserver
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 ---
@@ -247,11 +247,11 @@ metadata:
 kind: ServiceAccount
 apiVersion: v1
 metadata:
-  name: RELEASE-NAME-airflow-worker
+  name: airflow-worker
   labels:
     tier: airflow
     component: worker
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 ---
@@ -259,11 +259,11 @@ metadata:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: RELEASE-NAME-postgresql
+  name: airflow-postgresql
   labels:
     app.kubernetes.io/name: postgresql
     helm.sh/chart: postgresql-10.5.3
-    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/instance: airflow
     app.kubernetes.io/managed-by: Helm
   namespace: airflow-app
 type: Opaque
@@ -295,15 +295,15 @@ data:
 kind: Secret
 apiVersion: v1
 metadata:
-  name: RELEASE-NAME-airflow-metadata
+  name: airflow-airflow-metadata
   labels:
     tier: airflow
-    release: RELEASE-NAME
+    release: airflow
     chart: airflow
     heritage: Helm
 type: Opaque
 data:
-  connection: "cG9zdGdyZXNxbDovL3Bvc3RncmVzOnBvc3RncmVzQFJFTEVBU0UtTkFNRS1wb3N0Z3Jlc3FsLmRlZmF1bHQ6NTQzMi9wb3N0Z3Jlcz9zc2xtb2RlPWRpc2FibGU="
+  connection: "cG9zdGdyZXNxbDovL3Bvc3RncmVzOnBvc3RncmVzQGFpcmZsb3ctcG9zdGdyZXNxbC5haXJmbG93LWFwcDo1NDMyL3Bvc3RncmVzP3NzbG1vZGU9ZGlzYWJsZQ=="
 ---
 # Source: airflow/templates/secrets/result-backend-connection-secret.yaml
 # Licensed to the Apache Software Foundation (ASF) under one
@@ -329,15 +329,15 @@ data:
 kind: Secret
 apiVersion: v1
 metadata:
-  name: RELEASE-NAME-airflow-result-backend
+  name: airflow-airflow-result-backend
   labels:
     tier: airflow
-    release: RELEASE-NAME
+    release: airflow
     chart: airflow
     heritage: Helm
 type: Opaque
 data:
-  connection: "ZGIrcG9zdGdyZXNxbDovL3Bvc3RncmVzOnBvc3RncmVzQFJFTEVBU0UtTkFNRS1wb3N0Z3Jlc3FsOjU0MzIvcG9zdGdyZXM/c3NsbW9kZT1kaXNhYmxl"
+  connection: "ZGIrcG9zdGdyZXNxbDovL3Bvc3RncmVzOnBvc3RncmVzQGFpcmZsb3ctcG9zdGdyZXNxbDo1NDMyL3Bvc3RncmVzP3NzbG1vZGU9ZGlzYWJsZQ=="
 ---
 # Source: airflow/templates/secrets/webserver-secret-key-secret.yaml
 # Licensed to the Apache Software Foundation (ASF) under one
@@ -364,16 +364,16 @@ data:
 kind: Secret
 apiVersion: v1
 metadata:
-  name: RELEASE-NAME-webserver-secret-key
+  name: airflow-webserver-secret-key
   labels:
     tier: airflow
     component: webserver
-    release: RELEASE-NAME
+    release: airflow
     chart: airflow
     heritage: Helm
 type: Opaque
 data:
-  webserver-secret-key: "YUdoTlpGazJka1Z2YlRWWVJVYzFWMWROVHpsVFZ6RTNWM3BTVTFSSVdHRT0="
+  webserver-secret-key: "TXpWTWVUUnJRMk5EVW01VWRHUXlkMlJTVkd3eloweDJOMHB1UzNOS1F6ST0="
 ---
 # Source: airflow/templates/configmaps/configmap.yaml
 # Licensed to the Apache Software Foundation (ASF) under one
@@ -399,11 +399,11 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: RELEASE-NAME-airflow-config
+  name: airflow-airflow-config
   labels:
     tier: airflow
     component: config
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 data:
@@ -441,10 +441,10 @@ data:
     reinit_frequency = 3600
     
     [kubernetes]
-    airflow_configmap = RELEASE-NAME-airflow-config
-    airflow_local_settings_configmap = RELEASE-NAME-airflow-config
+    airflow_configmap = airflow-airflow-config
+    airflow_local_settings_configmap = airflow-airflow-config
     multi_namespace_mode = False
-    namespace = default
+    namespace = airflow-app
     pod_template_file = /opt/airflow/pod_templates/pod_template_file.yaml
     worker_container_repository = apache/airflow
     worker_container_tag = 2.1.4
@@ -454,14 +454,14 @@ data:
     remote_logging = False
     
     [metrics]
-    statsd_host = RELEASE-NAME-statsd
+    statsd_host = airflow-statsd
     statsd_on = True
     statsd_port = 9125
     statsd_prefix = airflow
     
     [scheduler]
     run_duration = 41460
-    statsd_host = RELEASE-NAME-statsd
+    statsd_host = airflow-statsd
     statsd_on = True
     statsd_port = 9125
     statsd_prefix = airflow
@@ -496,11 +496,11 @@ data:
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: RELEASE-NAME-pod-launcher-role
+  name: airflow-pod-launcher-role
   namespace: airflow-app
   labels:
     tier: airflow
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 rules:
@@ -559,11 +559,11 @@ rules:
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: RELEASE-NAME-pod-log-reader-role
+  name: airflow-pod-log-reader-role
   namespace: airflow-app
   labels:
     tier: airflow
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 rules:
@@ -608,19 +608,19 @@ kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   namespace: airflow-app
-  name: RELEASE-NAME-pod-launcher-rolebinding
+  name: airflow-pod-launcher-rolebinding
   labels:
     tier: airflow
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: RELEASE-NAME-pod-launcher-role
+  name: airflow-pod-launcher-role
 subjects:
   - kind: ServiceAccount
-    name: RELEASE-NAME-airflow-worker
+    name: airflow-worker
     namespace: airflow-app
 ---
 # Source: airflow/templates/rbac/pod-log-reader-rolebinding.yaml
@@ -648,30 +648,30 @@ kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   namespace: airflow-app
-  name: RELEASE-NAME-pod-log-reader-rolebinding
+  name: airflow-pod-log-reader-rolebinding
   labels:
     tier: airflow
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: RELEASE-NAME-pod-log-reader-role
+  name: airflow-pod-log-reader-role
 subjects:
   - kind: ServiceAccount
-    name: RELEASE-NAME-airflow-webserver
+    name: airflow-webserver
     namespace: airflow-app
 ---
 # Source: airflow/charts/postgresql/templates/svc-headless.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: RELEASE-NAME-postgresql-headless
+  name: airflow-postgresql-headless
   labels:
     app.kubernetes.io/name: postgresql
     helm.sh/chart: postgresql-10.5.3
-    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/instance: airflow
     app.kubernetes.io/managed-by: Helm
     # Use this annotation in addition to the actual publishNotReadyAddresses
     # field below because the annotation will stop being respected soon but the
@@ -692,17 +692,17 @@ spec:
       targetPort: tcp-postgresql
   selector:
     app.kubernetes.io/name: postgresql
-    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/instance: airflow
 ---
 # Source: airflow/charts/postgresql/templates/svc.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: RELEASE-NAME-postgresql
+  name: airflow-postgresql
   labels:
     app.kubernetes.io/name: postgresql
     helm.sh/chart: postgresql-10.5.3
-    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/instance: airflow
     app.kubernetes.io/managed-by: Helm
   annotations:
   namespace: airflow-app
@@ -714,7 +714,7 @@ spec:
       targetPort: tcp-postgresql
   selector:
     app.kubernetes.io/name: postgresql
-    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/instance: airflow
     role: primary
 ---
 # Source: airflow/templates/flower/flower-service.yaml
@@ -741,11 +741,11 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: RELEASE-NAME-flower
+  name: airflow-flower
   labels:
     tier: airflow
     component: flower
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 spec:
@@ -753,7 +753,7 @@ spec:
   selector:
     tier: airflow
     component: flower
-    release: RELEASE-NAME
+    release: airflow
   ports:
   
     -
@@ -784,11 +784,11 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: RELEASE-NAME-redis
+  name: airflow-redis
   labels:
     tier: airflow
     component: redis
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 spec:
@@ -796,7 +796,7 @@ spec:
   selector:
     tier: airflow
     component: redis
-    release: RELEASE-NAME
+    release: airflow
   ports:
     - name: redis-db
       protocol: TCP
@@ -827,11 +827,11 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: RELEASE-NAME-statsd
+  name: airflow-statsd
   labels:
     tier: airflow
     component: statsd
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
   annotations:
@@ -842,7 +842,7 @@ spec:
   selector:
     tier: airflow
     component: statsd
-    release: RELEASE-NAME
+    release: airflow
   ports:
     - name: statsd-ingest
       protocol: UDP
@@ -877,11 +877,11 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: RELEASE-NAME-webserver
+  name: airflow-webserver
   labels:
     tier: airflow
     component: webserver
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 spec:
@@ -889,7 +889,7 @@ spec:
   selector:
     tier: airflow
     component: webserver
-    release: RELEASE-NAME
+    release: airflow
   ports:
   
     -
@@ -920,11 +920,11 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: RELEASE-NAME-worker
+  name: airflow-worker
   labels:
     tier: airflow
     component: worker
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 spec:
@@ -932,7 +932,7 @@ spec:
   selector:
     tier: airflow
     component: worker
-    release: RELEASE-NAME
+    release: airflow
   ports:
     - name: worker-logs
       protocol: TCP
@@ -963,28 +963,28 @@ spec:
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: RELEASE-NAME-flower
+  name: airflow-flower
   labels:
     tier: airflow
     component: flower
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
   annotations:
-    checksum/airflow-config: 918eecb574e1c379f95955f272c03414a1eea80e18232500572413a3961fe468
+    checksum/airflow-config: 6ca5086b3fc74ada5f7baae8ae67c18c967c993549349a8ac729c34e66de86cc
 spec:
   replicas: 1
   selector:
     matchLabels:
       tier: airflow
       component: flower
-      release: RELEASE-NAME
+      release: airflow
   template:
     metadata:
       labels:
         tier: airflow
         component: flower
-        release: RELEASE-NAME
+        release: airflow
     spec:
       nodeSelector:
         {}
@@ -992,7 +992,7 @@ spec:
         {}
       tolerations:
         []
-      serviceAccountName: RELEASE-NAME-airflow-flower
+      serviceAccountName: airflow-flower
       restartPolicy: Always
       securityContext:
         runAsUser: 50000
@@ -1037,37 +1037,37 @@ spec:
             - name: AIRFLOW__CORE__FERNET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-fernet-key
+                  name: airflow-fernet-key
                   key: fernet-key
             - name: AIRFLOW__CORE__SQL_ALCHEMY_CONN
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-metadata
+                  name: airflow-airflow-metadata
                   key: connection
             - name: AIRFLOW_CONN_AIRFLOW_DB
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-metadata
+                  name: airflow-airflow-metadata
                   key: connection
             - name: AIRFLOW__WEBSERVER__SECRET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-webserver-secret-key
+                  name: airflow-webserver-secret-key
                   key: webserver-secret-key
             - name: AIRFLOW__CELERY__CELERY_RESULT_BACKEND
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-result-backend
+                  name: airflow-airflow-result-backend
                   key: connection
             - name: AIRFLOW__CELERY__RESULT_BACKEND
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-result-backend
+                  name: airflow-airflow-result-backend
                   key: connection
             - name: AIRFLOW__CELERY__BROKER_URL
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-broker-url
+                  name: airflow-broker-url
                   key: connection          
             # Dynamically created environment variables
             # Dynamically created secret envs
@@ -1075,7 +1075,7 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: RELEASE-NAME-airflow-config
+            name: airflow-airflow-config
 ---
 # Source: airflow/templates/scheduler/scheduler-deployment.yaml
 # Licensed to the Apache Software Foundation (ASF) under one
@@ -1108,11 +1108,11 @@ spec:
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: RELEASE-NAME-scheduler
+  name: airflow-scheduler
   labels:
     tier: airflow
     component: scheduler
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 spec:
@@ -1121,18 +1121,18 @@ spec:
     matchLabels:
       tier: airflow
       component: scheduler
-      release: RELEASE-NAME
+      release: airflow
   template:
     metadata:
       labels:
         tier: airflow
         component: scheduler
-        release: RELEASE-NAME
+        release: airflow
       annotations:
-        checksum/metadata-secret: 7c54201013e432b164782aa58433e49a9cd14d0581827b7964e495ccdbd010db
-        checksum/result-backend-secret: dc675ec58df000fc4a4e236e2c8c990ebe2f615a7567bcc430b3cd65920f09e9
+        checksum/metadata-secret: 1a1fc069b923bb3e0672bfaafeabc96e742a12b5cfa1d562647ec204ed303ee2
+        checksum/result-backend-secret: 81fd0bc85dc6b240d98a984a508d94f010a012348f2ce63d2a262b0cbc6e0356
         checksum/pgbouncer-config-secret: da52bd1edfe820f0ddfacdebb20a4cc6407d296ee45bcb500a6407e2261a5ba2
-        checksum/airflow-config: 918eecb574e1c379f95955f272c03414a1eea80e18232500572413a3961fe468
+        checksum/airflow-config: 6ca5086b3fc74ada5f7baae8ae67c18c967c993549349a8ac729c34e66de86cc
         checksum/extra-configmaps: 2e44e493035e2f6a255d08f8104087ff10d30aef6f63176f1b18f75f73295598
         checksum/extra-secrets: bb91ef06ddc31c0c5a29973832163d8b0b597812a793ef911d33b622bc9d1655
         cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
@@ -1152,7 +1152,7 @@ spec:
         []
       restartPolicy: Always
       terminationGracePeriodSeconds: 10
-      serviceAccountName: RELEASE-NAME-airflow-scheduler
+      serviceAccountName: airflow-scheduler
       securityContext:
         runAsUser: 50000
         fsGroup: 0
@@ -1212,37 +1212,37 @@ spec:
             - name: AIRFLOW__CORE__FERNET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-fernet-key
+                  name: airflow-fernet-key
                   key: fernet-key
             - name: AIRFLOW__CORE__SQL_ALCHEMY_CONN
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-metadata
+                  name: airflow-airflow-metadata
                   key: connection
             - name: AIRFLOW_CONN_AIRFLOW_DB
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-metadata
+                  name: airflow-airflow-metadata
                   key: connection
             - name: AIRFLOW__WEBSERVER__SECRET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-webserver-secret-key
+                  name: airflow-webserver-secret-key
                   key: webserver-secret-key
             - name: AIRFLOW__CELERY__CELERY_RESULT_BACKEND
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-result-backend
+                  name: airflow-airflow-result-backend
                   key: connection
             - name: AIRFLOW__CELERY__RESULT_BACKEND
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-result-backend
+                  name: airflow-airflow-result-backend
                   key: connection
             - name: AIRFLOW__CELERY__BROKER_URL
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-broker-url
+                  name: airflow-broker-url
                   key: connection
       containers:
         # Always run the main scheduler container.
@@ -1263,37 +1263,37 @@ spec:
             - name: AIRFLOW__CORE__FERNET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-fernet-key
+                  name: airflow-fernet-key
                   key: fernet-key
             - name: AIRFLOW__CORE__SQL_ALCHEMY_CONN
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-metadata
+                  name: airflow-airflow-metadata
                   key: connection
             - name: AIRFLOW_CONN_AIRFLOW_DB
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-metadata
+                  name: airflow-airflow-metadata
                   key: connection
             - name: AIRFLOW__WEBSERVER__SECRET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-webserver-secret-key
+                  name: airflow-webserver-secret-key
                   key: webserver-secret-key
             - name: AIRFLOW__CELERY__CELERY_RESULT_BACKEND
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-result-backend
+                  name: airflow-airflow-result-backend
                   key: connection
             - name: AIRFLOW__CELERY__RESULT_BACKEND
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-result-backend
+                  name: airflow-airflow-result-backend
                   key: connection
             - name: AIRFLOW__CELERY__BROKER_URL
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-broker-url
+                  name: airflow-broker-url
                   key: connection
           livenessProbe:
             initialDelaySeconds: 10
@@ -1356,7 +1356,7 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: RELEASE-NAME-airflow-config
+            name: airflow-airflow-config
         - name: logs
           emptyDir: {}
 ---
@@ -1384,11 +1384,11 @@ spec:
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: RELEASE-NAME-statsd
+  name: airflow-statsd
   labels:
     tier: airflow
     component: statsd
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 spec:
@@ -1397,13 +1397,13 @@ spec:
     matchLabels:
       tier: airflow
       component: statsd
-      release: RELEASE-NAME
+      release: airflow
   template:
     metadata:
       labels:
         tier: airflow
         component: statsd
-        release: RELEASE-NAME
+        release: airflow
     spec:
       nodeSelector:
         {}
@@ -1411,7 +1411,7 @@ spec:
         {}
       tolerations:
         []
-      serviceAccountName: RELEASE-NAME-airflow-statsd
+      serviceAccountName: airflow-statsd
       securityContext:
         runAsUser: 65534
       restartPolicy: Always
@@ -1468,11 +1468,11 @@ spec:
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: RELEASE-NAME-webserver
+  name: airflow-webserver
   labels:
     tier: airflow
     component: webserver
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 spec:
@@ -1493,23 +1493,23 @@ spec:
     matchLabels:
       tier: airflow
       component: webserver
-      release: RELEASE-NAME
+      release: airflow
   template:
     metadata:
       labels:
         tier: airflow
         component: webserver
-        release: RELEASE-NAME
+        release: airflow
       annotations:
-        checksum/metadata-secret: 7c54201013e432b164782aa58433e49a9cd14d0581827b7964e495ccdbd010db
+        checksum/metadata-secret: 1a1fc069b923bb3e0672bfaafeabc96e742a12b5cfa1d562647ec204ed303ee2
         checksum/pgbouncer-config-secret: da52bd1edfe820f0ddfacdebb20a4cc6407d296ee45bcb500a6407e2261a5ba2
-        checksum/webserver-secret-key: 627ce914ce8dda57d3b66d6af661e4092a5d5bd3388ebb155cc36005d69f8a23
-        checksum/airflow-config: 918eecb574e1c379f95955f272c03414a1eea80e18232500572413a3961fe468
+        checksum/webserver-secret-key: 87384b1db634f70ede93d552f2b04d1b610505c6a461af1c99c23199bcc8e0a8
+        checksum/airflow-config: 6ca5086b3fc74ada5f7baae8ae67c18c967c993549349a8ac729c34e66de86cc
         checksum/webserver-config: 4a2281a4e3ed0cc5e89f07aba3c1bb314ea51c17cb5d2b41e9b045054a6b5c72
         checksum/extra-configmaps: 2e44e493035e2f6a255d08f8104087ff10d30aef6f63176f1b18f75f73295598
         checksum/extra-secrets: bb91ef06ddc31c0c5a29973832163d8b0b597812a793ef911d33b622bc9d1655
     spec:
-      serviceAccountName: RELEASE-NAME-airflow-webserver
+      serviceAccountName: airflow-webserver
       nodeSelector:
         {}
       affinity:
@@ -1583,37 +1583,37 @@ spec:
             - name: AIRFLOW__CORE__FERNET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-fernet-key
+                  name: airflow-fernet-key
                   key: fernet-key
             - name: AIRFLOW__CORE__SQL_ALCHEMY_CONN
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-metadata
+                  name: airflow-airflow-metadata
                   key: connection
             - name: AIRFLOW_CONN_AIRFLOW_DB
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-metadata
+                  name: airflow-airflow-metadata
                   key: connection
             - name: AIRFLOW__WEBSERVER__SECRET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-webserver-secret-key
+                  name: airflow-webserver-secret-key
                   key: webserver-secret-key
             - name: AIRFLOW__CELERY__CELERY_RESULT_BACKEND
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-result-backend
+                  name: airflow-airflow-result-backend
                   key: connection
             - name: AIRFLOW__CELERY__RESULT_BACKEND
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-result-backend
+                  name: airflow-airflow-result-backend
                   key: connection
             - name: AIRFLOW__CELERY__BROKER_URL
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-broker-url
+                  name: airflow-broker-url
                   key: connection
       containers:
         - name: webserver
@@ -1663,73 +1663,73 @@ spec:
             - name: AIRFLOW__CORE__FERNET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-fernet-key
+                  name: airflow-fernet-key
                   key: fernet-key
             - name: AIRFLOW__CORE__SQL_ALCHEMY_CONN
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-metadata
+                  name: airflow-airflow-metadata
                   key: connection
             - name: AIRFLOW_CONN_AIRFLOW_DB
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-metadata
+                  name: airflow-airflow-metadata
                   key: connection
             - name: AIRFLOW__WEBSERVER__SECRET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-webserver-secret-key
+                  name: airflow-webserver-secret-key
                   key: webserver-secret-key
             - name: AIRFLOW__CELERY__CELERY_RESULT_BACKEND
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-result-backend
+                  name: airflow-airflow-result-backend
                   key: connection
             - name: AIRFLOW__CELERY__RESULT_BACKEND
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-result-backend
+                  name: airflow-airflow-result-backend
                   key: connection
             - name: AIRFLOW__CELERY__BROKER_URL
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-broker-url
+                  name: airflow-broker-url
                   key: connection
       volumes:
         - name: config
           configMap:
-            name: RELEASE-NAME-airflow-config
+            name: airflow-airflow-config
 ---
 # Source: airflow/charts/postgresql/templates/statefulset.yaml
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: RELEASE-NAME-postgresql
+  name: airflow-postgresql
   labels:
     app.kubernetes.io/name: postgresql
     helm.sh/chart: postgresql-10.5.3
-    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/instance: airflow
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: primary
   annotations:
   namespace: airflow-app
 spec:
-  serviceName: RELEASE-NAME-postgresql-headless
+  serviceName: airflow-postgresql-headless
   replicas: 1
   updateStrategy:
     type: RollingUpdate
   selector:
     matchLabels:
       app.kubernetes.io/name: postgresql
-      app.kubernetes.io/instance: RELEASE-NAME
+      app.kubernetes.io/instance: airflow
       role: primary
   template:
     metadata:
-      name: RELEASE-NAME-postgresql
+      name: airflow-postgresql
       labels:
         app.kubernetes.io/name: postgresql
         helm.sh/chart: postgresql-10.5.3
-        app.kubernetes.io/instance: RELEASE-NAME
+        app.kubernetes.io/instance: airflow
         app.kubernetes.io/managed-by: Helm
         role: primary
         app.kubernetes.io/component: primary
@@ -1743,10 +1743,10 @@ spec:
                 labelSelector:
                   matchLabels:
                     app.kubernetes.io/name: postgresql
-                    app.kubernetes.io/instance: RELEASE-NAME
+                    app.kubernetes.io/instance: airflow
                     app.kubernetes.io/component: primary
                 namespaces:
-                  - "default"
+                  - "airflow-app"
                 topologyKey: kubernetes.io/hostname
               weight: 1
         nodeAffinity:
@@ -1754,7 +1754,7 @@ spec:
       securityContext:
         fsGroup: 1001
       containers:
-        - name: RELEASE-NAME-postgresql
+        - name: airflow-postgresql
           image: docker.io/bitnami/postgresql:11.12.0-debian-10-r44
           imagePullPolicy: "IfNotPresent"
           resources:
@@ -1777,7 +1777,7 @@ spec:
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-postgresql
+                  name: airflow-postgresql
                   key: postgresql-password
             - name: POSTGRESQL_ENABLE_LDAP
               value: "no"
@@ -1867,26 +1867,26 @@ spec:
 kind: StatefulSet
 apiVersion: apps/v1
 metadata:
-  name: RELEASE-NAME-redis
+  name: airflow-redis
   labels:
     tier: airflow
     component: redis
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 spec:
-  serviceName: RELEASE-NAME-redis
+  serviceName: airflow-redis
   selector:
     matchLabels:
       tier: airflow
       component: redis
-      release: RELEASE-NAME
+      release: airflow
   template:
     metadata:
       labels:
         tier: airflow
         component: redis
-        release: RELEASE-NAME
+        release: airflow
       annotations:
         cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
     spec:
@@ -1896,7 +1896,7 @@ spec:
         {}
       tolerations:
         []
-      serviceAccountName: RELEASE-NAME-airflow-redis
+      serviceAccountName: airflow-redis
       containers:
         - name: redis
           image: redis:6-buster
@@ -1915,7 +1915,7 @@ spec:
             - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-redis-password
+                  name: airflow-redis-password
                   key: password
   volumeClaimTemplates:
     - metadata:
@@ -1950,33 +1950,33 @@ spec:
 kind: StatefulSet
 apiVersion: apps/v1
 metadata:
-  name: RELEASE-NAME-worker
+  name: airflow-worker
   labels:
     tier: airflow
     component: worker
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
 spec:
-  serviceName: RELEASE-NAME-worker
+  serviceName: airflow-worker
   replicas: 1
   selector:
     matchLabels:
       tier: airflow
       component: worker
-      release: RELEASE-NAME
+      release: airflow
   template:
     metadata:
       labels:
         tier: airflow
         component: worker
-        release: RELEASE-NAME
+        release: airflow
       annotations:
-        checksum/metadata-secret: 7c54201013e432b164782aa58433e49a9cd14d0581827b7964e495ccdbd010db
-        checksum/result-backend-secret: dc675ec58df000fc4a4e236e2c8c990ebe2f615a7567bcc430b3cd65920f09e9
+        checksum/metadata-secret: 1a1fc069b923bb3e0672bfaafeabc96e742a12b5cfa1d562647ec204ed303ee2
+        checksum/result-backend-secret: 81fd0bc85dc6b240d98a984a508d94f010a012348f2ce63d2a262b0cbc6e0356
         checksum/pgbouncer-config-secret: da52bd1edfe820f0ddfacdebb20a4cc6407d296ee45bcb500a6407e2261a5ba2
-        checksum/webserver-secret-key: 84c9c8a3a6ff8566adf72702e5d0dea92c76084caff65ce8e00c9042f610a3bd
-        checksum/airflow-config: 918eecb574e1c379f95955f272c03414a1eea80e18232500572413a3961fe468
+        checksum/webserver-secret-key: d36fef4a3f70cc27d3ca336ea199a5528f29b8de78971c4711cabf8cb403a0c4
+        checksum/airflow-config: 6ca5086b3fc74ada5f7baae8ae67c18c967c993549349a8ac729c34e66de86cc
         checksum/extra-configmaps: 2e44e493035e2f6a255d08f8104087ff10d30aef6f63176f1b18f75f73295598
         checksum/extra-secrets: bb91ef06ddc31c0c5a29973832163d8b0b597812a793ef911d33b622bc9d1655
         cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
@@ -1996,7 +1996,7 @@ spec:
         []
       terminationGracePeriodSeconds: 600
       restartPolicy: Always
-      serviceAccountName: RELEASE-NAME-airflow-worker
+      serviceAccountName: airflow-worker
       securityContext:
         runAsUser: 50000
         fsGroup: 0
@@ -2056,37 +2056,37 @@ spec:
             - name: AIRFLOW__CORE__FERNET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-fernet-key
+                  name: airflow-fernet-key
                   key: fernet-key
             - name: AIRFLOW__CORE__SQL_ALCHEMY_CONN
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-metadata
+                  name: airflow-airflow-metadata
                   key: connection
             - name: AIRFLOW_CONN_AIRFLOW_DB
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-metadata
+                  name: airflow-airflow-metadata
                   key: connection
             - name: AIRFLOW__WEBSERVER__SECRET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-webserver-secret-key
+                  name: airflow-webserver-secret-key
                   key: webserver-secret-key
             - name: AIRFLOW__CELERY__CELERY_RESULT_BACKEND
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-result-backend
+                  name: airflow-airflow-result-backend
                   key: connection
             - name: AIRFLOW__CELERY__RESULT_BACKEND
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-result-backend
+                  name: airflow-airflow-result-backend
                   key: connection
             - name: AIRFLOW__CELERY__BROKER_URL
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-broker-url
+                  name: airflow-broker-url
                   key: connection
       containers:
         - name: worker
@@ -2127,37 +2127,37 @@ spec:
             - name: AIRFLOW__CORE__FERNET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-fernet-key
+                  name: airflow-fernet-key
                   key: fernet-key
             - name: AIRFLOW__CORE__SQL_ALCHEMY_CONN
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-metadata
+                  name: airflow-airflow-metadata
                   key: connection
             - name: AIRFLOW_CONN_AIRFLOW_DB
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-metadata
+                  name: airflow-airflow-metadata
                   key: connection
             - name: AIRFLOW__WEBSERVER__SECRET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-webserver-secret-key
+                  name: airflow-webserver-secret-key
                   key: webserver-secret-key
             - name: AIRFLOW__CELERY__CELERY_RESULT_BACKEND
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-result-backend
+                  name: airflow-airflow-result-backend
                   key: connection
             - name: AIRFLOW__CELERY__RESULT_BACKEND
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-result-backend
+                  name: airflow-airflow-result-backend
                   key: connection
             - name: AIRFLOW__CELERY__BROKER_URL
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-broker-url
+                  name: airflow-broker-url
                   key: connection
         - name: worker-log-groomer
           image: apache/airflow:2.1.4
@@ -2177,7 +2177,7 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: RELEASE-NAME-airflow-config
+            name: airflow-airflow-config
   volumeClaimTemplates:
     - metadata:
         name: logs
@@ -3014,10 +3014,10 @@ spec:
 kind: Secret
 apiVersion: v1
 metadata:
-  name: RELEASE-NAME-fernet-key
+  name: airflow-fernet-key
   labels:
     tier: airflow
-    release: RELEASE-NAME
+    release: airflow
     chart: airflow
     heritage: Helm
   annotations:
@@ -3026,7 +3026,7 @@ metadata:
     "helm.sh/hook-weight": "0"
 type: Opaque
 data:
-  fernet-key: "ZFVKV1lYZHdXbGQwUmtwUFpqZEJkMVIxYUdwclp6VlhXVWsxYTJreU5Vbz0="
+  fernet-key: "TWs4eE4wUlpXV05CVVdNeE1uZEdTV000VmxwRk5ETjNVbXBwYjNoeFNGST0="
 ---
 # Source: airflow/templates/secrets/redis-secrets.yaml
 # Licensed to the Apache Software Foundation (ASF) under one
@@ -3060,11 +3060,11 @@ data:
 kind: Secret
 apiVersion: v1
 metadata:
-  name: RELEASE-NAME-redis-password
+  name: airflow-redis-password
   labels:
     tier: airflow
     component: redis
-    release: RELEASE-NAME
+    release: airflow
     chart: airflow
     heritage: Helm
   annotations:
@@ -3073,7 +3073,7 @@ metadata:
     "helm.sh/hook-weight": "0"
 type: Opaque
 data:
-  password: "dUhKclc0WWp2Sw=="
+  password: "RVcxS2dNNW1Ldw=="
 ---
 # Source: airflow/templates/secrets/redis-secrets.yaml
 ##################################
@@ -3082,11 +3082,11 @@ data:
 kind: Secret
 apiVersion: v1
 metadata:
-  name: RELEASE-NAME-broker-url
+  name: airflow-broker-url
   labels:
     tier: airflow
     component: redis
-    release: RELEASE-NAME
+    release: airflow
     chart: airflow
     heritage: Helm
   annotations:
@@ -3095,7 +3095,7 @@ metadata:
     "helm.sh/hook-weight": "0"
 type: Opaque
 data:
-  connection: "cmVkaXM6Ly86dUhKclc0WWp2S0BSRUxFQVNFLU5BTUUtcmVkaXM6NjM3OS8w"
+  connection: "cmVkaXM6Ly86RVcxS2dNNW1Ld0BhaXJmbG93LXJlZGlzOjYzNzkvMA=="
 ---
 # Source: airflow/templates/jobs/create-user-job.yaml
 # Licensed to the Apache Software Foundation (ASF) under one
@@ -3121,11 +3121,11 @@ data:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: RELEASE-NAME-create-user
+  name: airflow-create-user
   labels:
     tier: airflow
     component: create-user-job
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
   annotations:
@@ -3138,7 +3138,7 @@ spec:
       labels:
         tier: airflow
         component: create-user-job
-        release: RELEASE-NAME
+        release: airflow
     spec:
       securityContext:
           runAsUser: 50000
@@ -3149,7 +3149,7 @@ spec:
         {}
       tolerations:
         []
-      serviceAccountName: RELEASE-NAME-airflow-create-user-job
+      serviceAccountName: airflow-create-user-job
       containers:
         - name: create-user
           image: apache/airflow:2.1.4
@@ -3181,37 +3181,37 @@ spec:
             - name: AIRFLOW__CORE__FERNET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-fernet-key
+                  name: airflow-fernet-key
                   key: fernet-key
             - name: AIRFLOW__CORE__SQL_ALCHEMY_CONN
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-metadata
+                  name: airflow-airflow-metadata
                   key: connection
             - name: AIRFLOW_CONN_AIRFLOW_DB
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-metadata
+                  name: airflow-airflow-metadata
                   key: connection
             - name: AIRFLOW__WEBSERVER__SECRET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-webserver-secret-key
+                  name: airflow-webserver-secret-key
                   key: webserver-secret-key
             - name: AIRFLOW__CELERY__CELERY_RESULT_BACKEND
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-result-backend
+                  name: airflow-airflow-result-backend
                   key: connection
             - name: AIRFLOW__CELERY__RESULT_BACKEND
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-result-backend
+                  name: airflow-airflow-result-backend
                   key: connection
             - name: AIRFLOW__CELERY__BROKER_URL
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-broker-url
+                  name: airflow-broker-url
                   key: connection
           volumeMounts:
             - name: config
@@ -3221,7 +3221,7 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: RELEASE-NAME-airflow-config
+            name: airflow-airflow-config
 ---
 # Source: airflow/templates/jobs/migrate-database-job.yaml
 # Licensed to the Apache Software Foundation (ASF) under one
@@ -3247,11 +3247,11 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: RELEASE-NAME-run-airflow-migrations
+  name: airflow-run-airflow-migrations
   labels:
     tier: airflow
     component: run-airflow-migrations
-    release: RELEASE-NAME
+    release: airflow
     chart: "airflow-1.2.0"
     heritage: Helm
   annotations:
@@ -3264,7 +3264,7 @@ spec:
       labels:
         tier: airflow
         component: run-airflow-migrations
-        release: RELEASE-NAME
+        release: airflow
     spec:
       securityContext:
           runAsUser: 50000
@@ -3275,7 +3275,7 @@ spec:
         {}
       tolerations:
         []
-      serviceAccountName: RELEASE-NAME-airflow-migrate-database-job
+      serviceAccountName: airflow-migrate-database-job
       containers:
         - name: run-airflow-migrations
           image: apache/airflow:2.1.4
@@ -3292,37 +3292,37 @@ spec:
             - name: AIRFLOW__CORE__FERNET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-fernet-key
+                  name: airflow-fernet-key
                   key: fernet-key
             - name: AIRFLOW__CORE__SQL_ALCHEMY_CONN
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-metadata
+                  name: airflow-airflow-metadata
                   key: connection
             - name: AIRFLOW_CONN_AIRFLOW_DB
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-metadata
+                  name: airflow-airflow-metadata
                   key: connection
             - name: AIRFLOW__WEBSERVER__SECRET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-webserver-secret-key
+                  name: airflow-webserver-secret-key
                   key: webserver-secret-key
             - name: AIRFLOW__CELERY__CELERY_RESULT_BACKEND
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-result-backend
+                  name: airflow-airflow-result-backend
                   key: connection
             - name: AIRFLOW__CELERY__RESULT_BACKEND
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-airflow-result-backend
+                  name: airflow-airflow-result-backend
                   key: connection
             - name: AIRFLOW__CELERY__BROKER_URL
               valueFrom:
                 secretKeyRef:
-                  name: RELEASE-NAME-broker-url
+                  name: airflow-broker-url
                   key: connection
           volumeMounts:
             - name: config
@@ -3332,4 +3332,4 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: RELEASE-NAME-airflow-config
+            name: airflow-airflow-config
