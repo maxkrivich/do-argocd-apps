@@ -265,7 +265,7 @@ metadata:
     helm.sh/chart: postgresql-10.5.3
     app.kubernetes.io/instance: RELEASE-NAME
     app.kubernetes.io/managed-by: Helm
-  namespace: default
+  namespace: airflow-app
 type: Opaque
 data:
   postgresql-password: "cG9zdGdyZXM="
@@ -497,7 +497,7 @@ kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: RELEASE-NAME-pod-launcher-role
-  namespace: default
+  namespace: airflow-app
   labels:
     tier: airflow
     release: RELEASE-NAME
@@ -560,7 +560,7 @@ kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: RELEASE-NAME-pod-log-reader-role
-  namespace: default
+  namespace: airflow-app
   labels:
     tier: airflow
     release: RELEASE-NAME
@@ -607,7 +607,7 @@ rules:
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  namespace: default
+  namespace: airflow-app
   name: RELEASE-NAME-pod-launcher-rolebinding
   labels:
     tier: airflow
@@ -621,7 +621,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: RELEASE-NAME-airflow-worker
-    namespace: default
+    namespace: airflow-app
 ---
 # Source: airflow/templates/rbac/pod-log-reader-rolebinding.yaml
 # Licensed to the Apache Software Foundation (ASF) under one
@@ -647,7 +647,7 @@ subjects:
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  namespace: default
+  namespace: airflow-app
   name: RELEASE-NAME-pod-log-reader-rolebinding
   labels:
     tier: airflow
@@ -661,7 +661,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: RELEASE-NAME-airflow-webserver
-    namespace: default
+    namespace: airflow-app
 ---
 # Source: airflow/charts/postgresql/templates/svc-headless.yaml
 apiVersion: v1
@@ -678,7 +678,7 @@ metadata:
     # field is broken in some versions of Kubernetes:
     # https://github.com/kubernetes/kubernetes/issues/58662
     service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
-  namespace: default
+  namespace: airflow-app
 spec:
   type: ClusterIP
   clusterIP: None
@@ -705,7 +705,7 @@ metadata:
     app.kubernetes.io/instance: RELEASE-NAME
     app.kubernetes.io/managed-by: Helm
   annotations:
-  namespace: default
+  namespace: airflow-app
 spec:
   type: ClusterIP
   ports:
@@ -1712,7 +1712,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: primary
   annotations:
-  namespace: default
+  namespace: airflow-app
 spec:
   serviceName: RELEASE-NAME-postgresql-headless
   replicas: 1
