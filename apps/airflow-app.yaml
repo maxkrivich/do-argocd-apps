@@ -15,7 +15,7 @@ spec:
     targetRevision: HEAD
     path: deployment/airflow/overlays/dev
     kustomize:
-      version: v3.5.4
+      version: v4.4.0
 
   syncPolicy:
     syncOptions:
