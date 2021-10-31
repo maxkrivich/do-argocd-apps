@@ -303,7 +303,7 @@ metadata:
     heritage: Helm
 type: Opaque
 data:
-  connection: "cG9zdGdyZXNxbDovL3Bvc3RncmVzOnBvc3RncmVzQGFpcmZsb3ctcG9zdGdyZXNxbC5haXJmbG93LWFwcDo1NDMyL3Bvc3RncmVzP3NzbG1vZGU9ZGlzYWJsZQ=="
+  connection: "cG9zdGdyZXNxbDovL3Bvc3RncmVzOnBvc3RncmVzQGRldi1haXJmbG93LXBvc3RncmVzcWwuYWlyZmxvdy1hcHA6NTQzMi9wb3N0Z3Jlcz9zc2xtb2RlPWRpc2FibGUK"
 ---
 # Source: airflow/templates/secrets/result-backend-connection-secret.yaml
 # Licensed to the Apache Software Foundation (ASF) under one
