@@ -8,7 +8,7 @@ metadata:
 spec:
   project: foo-project
   destination:
-    namespace: foo-project-dev
+    namespace: dev-foo-project
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/maxkrivich/do-argocd-apps.git
