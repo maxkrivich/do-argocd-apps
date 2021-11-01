@@ -39,8 +39,11 @@ spec:
             port: 8080
             path: /health
         resources:
-          limits:
+          requests:
             memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
             cpu: "500m"
         ports:
         - containerPort: 8080
