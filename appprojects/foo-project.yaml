@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: airflow-project
+  name: foo-project
   namespace: argocd
 spec:
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
   destinations:
-  - namespace: airflow-app
+  - namespace: foo-project-dev
     server: https://kubernetes.default.svc
   orphanedResources:
     warn: false

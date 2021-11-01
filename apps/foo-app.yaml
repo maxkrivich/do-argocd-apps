@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: airflow-app
+  name: foo-api
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  project: airflow-project
+  project: foo-project
   destination:
-    namespace: airflow-app
+    namespace: foo-project-dev
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/maxkrivich/do-argocd-apps.git
     targetRevision: HEAD
-    path: deployment/airflow/overlays/dev
+    path: deployment/foo/overlays/dev
 
   syncPolicy:
     syncOptions:

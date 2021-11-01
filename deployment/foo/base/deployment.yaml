@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo-api
+spec:
+  selector:
+    matchLabels:
+      app: foo-api
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: foo-api
+    spec:
+      containers:
+      - name: foo-api
+        image: foo-api
+        imagePullPolicy: Always
+        env:
+          - name: GIN_MODE
+            valueFrom:
+              configMapKeyRef:
+                name: foo-api-configmap
+                key: mode
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 10001
+        readinessProbe:
+          httpGet:
+            port: 8080
+            path: /health
+        livenessProbe:
+          httpGet:
+            port: 8080
+            path: /health
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+        - name: regcred
