@@ -1,14 +1,16 @@
-
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: foo-api
 spec:
+  ingressClassName: nginx
   rules:
     - http:
         paths:
           - path: /
             pathType: Prefix
             backend:
-              serviceName: foo-api
-              servicePort: http
+              service: 
+                name: foo-api
+                port:
+                  number: 80
