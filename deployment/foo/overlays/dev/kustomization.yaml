@@ -2,19 +2,25 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - ../../base
+- ../../base
 
 patchesStrategicMerge:
-  - patch.yaml
+- patch.yaml
 
 namespace: dev-foo-project
 
 
 configMapGenerator:
-- name: foo-api-configmap
-  behavior: merge
+- behavior: merge
   literals:
-    - mode="debug"
+  - mode="debug"
+  name: foo-api-configmap
+
+
+images:
+  - name: foo-api
+    newName: maxkrivich/foo-api
+    newTag: 0105515a9186ca6d9d810472e2f163ae89698c05
 
 
 namePrefix: dev-

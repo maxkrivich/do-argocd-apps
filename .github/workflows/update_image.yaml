@@ -1,0 +1,38 @@
+name: Update image reference
+
+on:
+  repository_dispatch:
+    types: [argocd-image-update]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        environment: [dev]
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Setup Kustomize
+        uses: imranismail/setup-kustomize@v1
+        with:
+          kustomize-version: "4.4.0"
+
+      - name: Update Kubernetes resources
+        run: |
+          cd deployment/${{ github.event.client_payload.app_name }}/overlays/${{ matrix.environment }}
+          kustomize edit set image ${{ github.event.client_payload.kustomize_image }}=${{ github.event.client_payload.image_name }}
+          cat kustomization.yaml
+
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit --no-verify --signoff -am "Deploy new image ${{ github.event.client_payload.sha }}"
+      
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

@@ -8,12 +8,6 @@ resources:
 
 namespace: foo-project
 
-images:
-  - name: foo-api
-    newName: maxkrivich/foo-api
-    newTag: 0105515a9186ca6d9d810472e2f163ae89698c05
-
-
 configMapGenerator:
 - name: foo-api-configmap
   literals:
