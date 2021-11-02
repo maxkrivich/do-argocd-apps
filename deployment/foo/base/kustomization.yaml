@@ -6,6 +6,7 @@ resources:
   - service.yaml
   - ingress.yaml
   - hpa.yaml
+  - service_monitor.yaml
 
 namespace: foo-project
 
