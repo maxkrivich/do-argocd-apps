@@ -5,14 +5,8 @@ metadata:
 spec:
   minReplicas: 1
   maxReplicas: 5
+  targetCPUUtilizationPercentage: 60
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: foo-api
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 60
