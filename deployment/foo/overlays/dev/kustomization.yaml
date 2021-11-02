@@ -4,8 +4,8 @@ kind: Kustomization
 resources:
 - ../../base
 
-# patchesStrategicMerge:
-# - patch.yaml
+patchesStrategicMerge:
+- hpa_patch.yaml
 
 namespace: dev-foo-project
 
