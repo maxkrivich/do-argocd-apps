@@ -3,7 +3,7 @@ kind: ServiceMonitor
 metadata:
   name: foo-api
   labels:
-    name: foo-api
+    app: foo-api
 spec:
   selector:
     matchLabels:
