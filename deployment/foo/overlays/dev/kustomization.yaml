@@ -20,7 +20,7 @@ configMapGenerator:
 images:
 - name: foo-api
   newName: maxkrivich/foo-api
-  newTag: 0122a718b3d63415b577b66024f976ab8e999979
+  newTag: 9324833a4d57cc33fa5900fc04732ebccc60a59e
 
 
 namePrefix: dev-
