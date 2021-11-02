@@ -7,6 +7,6 @@ spec:
   maxReplicas: 5
   targetCPUUtilizationPercentage: 60
   scaleTargetRef:
-    apiVersion: argoproj.io/v1alpha1
-    kind: Rollout
+    apiVersion: apps/v1
+    kind: Deployment
     name: foo-api
