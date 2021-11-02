@@ -4,7 +4,7 @@ metadata:
   name: foo-api
   labels:
     app: foo-api
-  namespace: kube-prometheus-stack
+    release: kube-prometheus-stack
 spec:
   namespaceSelector:
     any: true

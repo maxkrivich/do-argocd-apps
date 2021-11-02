@@ -10,8 +10,6 @@ spec:
   destinations:
   - namespace: dev-foo-project
     server: https://kubernetes.default.svc
-  - namespace: kube-prometheus-stack
-    server: https://kubernetes.default.svc
   orphanedResources:
     warn: false
   sourceRepos:
